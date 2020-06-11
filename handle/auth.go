@@ -58,7 +58,7 @@ func GenerateTK(c echo.Context, user auth.User) (err error) {
 	}
 	refreshToken, err := auth.NewToken(user.ID, user.Username, refreshTokenDuration, "refresh_token", user.Role, user.Scope...)
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, echo.Map{"message": "can't generate refresh_token"})
+		return c.JSON(http.StatusInternalServerError, echo.Map{"message": "can't generate refresh_token", "redis": err.Error()})
 	}
 	return c.JSON(http.StatusOK, echo.Map{
 		"client_id":     user.ID,
