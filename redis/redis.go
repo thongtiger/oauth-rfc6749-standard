@@ -11,7 +11,7 @@ import (
 	"github.com/go-redis/redis"
 )
 
-var host, port = "localhost", "6379" // default
+var host, port = "redis", "6379" // default
 
 // RedisClient connector
 func RedisClient() *redis.Client {
